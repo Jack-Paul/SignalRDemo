@@ -1,0 +1,11 @@
+﻿@page
+
+<h>@TempData["username"]</h>
+<ul id="messageList">
+</ul>
+<div class="messagebox">
+    <input type="text" id="message" />
+    <input type="button" id="send" placeholder="send" value="Send" />
+</div>
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/MessageHub.js"></script>
