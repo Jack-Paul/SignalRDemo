@@ -1,0 +1,33 @@
+name: Run SAST
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  sast:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: setup .net
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.0'
+
+    - name: restore dependency
+      run: dotnet restore
+
+    - name: build
+      run: dotnet build
+
+    - name: SAST run
+      run: dotnet Sync_SAST/tools/net8.0/any/Sync_SAST.dll -s 'ChatApp/ChatApp.sln' -e 'SAST/output.sarif'
+      

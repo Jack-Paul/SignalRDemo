@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Sync_SAST</id>
+    <version>1.0.2</version>
+    <title>SAST tool</title>
+    <authors>AppSec Team</authors>
+    <description>Used for Static application security testing purpose.</description>
+    <packageTypes>
+      <packageType name="DotnetTool" />
+    </packageTypes>
+    <repository type="git" commit="6b47fa7adf5ce621b5696b6baeafb46fdfb12694" />
+  </metadata>
+</package>
