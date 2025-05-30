@@ -23,10 +23,10 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: restore dependency
-      run: dotnet restore
+      run: dotnet restore ChatApp/ChatApp.sln
 
     - name: build
-      run: dotnet build
+      run: dotnet build ChatApp/ChatApp.sln
 
     - name: SAST run
       run: dotnet Sync_SAST/tools/net8.0/any/Sync_SAST.dll -s 'ChatApp/ChatApp.sln' -e 'SAST/output.sarif'
