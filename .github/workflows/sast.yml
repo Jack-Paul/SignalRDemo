@@ -29,11 +29,11 @@ jobs:
       run: dotnet build ChatApp/ChatApp.sln
 
     - name: SAST run
-      run: dotnet Sync_SAST/tools/net8.0/any/Sync_SAST.dll -s 'ChatApp/ChatApp.sln' -e 'SAST/output.sarif'
+      run: dotnet Sync_SAST/tools/net8.0/any/Sync_SAST.dll -s 'ChatApp/ChatApp.sln' -e 'SAST/output'
 
     - name: Upload SARIF artifact
       uses: actions/upload-artifact@v4
       with:
         name: sarif-results
-        path: output/results.sarif
+        path: SAST/output/ChatApp-output.sarif
       
