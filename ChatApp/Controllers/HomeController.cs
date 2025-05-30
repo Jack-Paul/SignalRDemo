@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ChatApp.Models;
+using System.IO;
 
 namespace ChatApp.Controllers
 {
@@ -19,10 +20,13 @@ namespace ChatApp.Controllers
         }
         public IActionResult ChatPage(string username)
         {
+            // Potentially unsafe code that could lead to path traversal
+            string filePath = Path.Combine("C:\\Users\\Public\\", username);
             TempData["username"] = username;
-            Redirect(username);
+            
             return View();
         }
+
         public IActionResult Index()
         {
             return View();
