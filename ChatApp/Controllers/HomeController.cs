@@ -20,6 +20,7 @@ namespace ChatApp.Controllers
         public IActionResult ChatPage(string username)
         {
             TempData["username"] = username;
+            Redirect(username);
             return View();
         }
         public IActionResult Index()
