@@ -32,7 +32,7 @@ jobs:
       run: dotnet Sync_SAST/tools/net8.0/any/Sync_SAST.dll -s 'ChatApp/ChatApp.sln' -e 'SAST/output.sarif'
 
     - name: Upload SARIF artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: sarif-results
         path: output/results.sarif
