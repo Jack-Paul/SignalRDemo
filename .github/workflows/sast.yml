@@ -36,4 +36,19 @@ jobs:
       with:
         name: sarif-results
         path: SAST/output/ChatApp-output.sarif
+
+    - name: Upload SARIF to DefectDojo
+      run: |
+        curl -X POST http://localhost:61015/api/v2/import-scan/ \
+        -H "Authorization: Token ${{ secrets.DEFECTDOJO_API_KEY }}" \
+        -F 'file=@output/results.sarif' \
+        -F 'scan_type=SARIF' \
+        -F 'engagement=1' \
+        -F 'product_id=1' \
+        -F 'minimum_severity=Low' \
+        -F 'active=true' \
+        -F 'verified=true' \
+        -F 'scan_date=${{ github.event.head_commit.timestamp }}' \
+        -F 'close_old_findings=false'
+
       
